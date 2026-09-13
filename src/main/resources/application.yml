@@ -3,14 +3,14 @@ spring:
     name: quality-control-service
   datasource:
     driver-class-name: org.postgresql.Driver
-    password: postgres
-    username: postgres
-    url: jdbc:postgresql://localhost:5436/postgres
+    password: ${POSTGRES_PASSWORD}
+    username: ${POSTGRES_USER}
+    url: ${POSTGRES_URL}
   jpa:
     hibernate:
       ddl-auto: update
 
 server:
-  port: 8080
+  port: 8081
 
 frame-check-result-topic: frame.check.results
