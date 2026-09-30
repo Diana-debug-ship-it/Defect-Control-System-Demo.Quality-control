@@ -1,6 +1,8 @@
-package diana.dev.quality_control_service.domain;
+package diana.dev.quality_control_service.domain.db;
 
 
+import diana.dev.quality_control_service.domain.CheckStatus;
+import diana.dev.quality_control_service.domain.MLVerdict;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,27 +12,27 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "hub_checks")
+@Table(name = "flange_checks")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class HubCheckEntity {
+public class FlangeCheckEntity {
 
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "hub_check_seq"
+            generator = "flange_check_seq"
     )
     @SequenceGenerator(
-            name = "hub_check_seq",
-            sequenceName = "hub_check_id_seq",
+            name = "flange_check_seq",
+            sequenceName = "flange_check_id_seq",
             allocationSize = 1
     )
     private Long id;
 
-    @Column(name = "hub_id", nullable = false)
-    private String hubId;
+    @Column(name = "flange_id", nullable = false)
+    private String flangeId;
 
     @Column(name = "timestamp", nullable = false)
     private LocalDateTime timestamp;
@@ -48,5 +50,8 @@ public class HubCheckEntity {
 
     @Column(name = "confidence", nullable = false)
     private Double confidence;
+
+    @Column(name = "geometry_metrics", columnDefinition = "jsonb", nullable = true)
+    private String geometryMetrics;
 
 }

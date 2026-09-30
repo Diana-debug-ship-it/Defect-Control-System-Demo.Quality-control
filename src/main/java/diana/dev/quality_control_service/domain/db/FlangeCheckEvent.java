@@ -2,27 +2,26 @@ package diana.dev.quality_control_service.domain.db;
 
 import diana.dev.quality_control_service.domain.CheckEventType;
 import diana.dev.quality_control_service.domain.CheckStatus;
-import diana.dev.quality_control_service.domain.MLVerdict;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
-public class HubCheckEvent {
+public class FlangeCheckEvent {
 
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "hub_check_event_seq"
+            generator = "flange_check_event_seq"
     )
     @SequenceGenerator(
-            name = "hub_check_event_seq",
-            sequenceName = "hub_check_event_id_seq",
+            name = "flange_check_event_seq",
+            sequenceName = "flange_check_event_id_seq",
             allocationSize = 1
     )
     private Long id;
 
-    @Column(name = "hub_check_id", nullable = false)
-    private String hubCheckId;
+    @Column(name = "flange_check_id", nullable = false)
+    private String flangeCheckId;
 
     @Column(name = "occurred_at", nullable = false)
     private LocalDateTime occurredAt;
