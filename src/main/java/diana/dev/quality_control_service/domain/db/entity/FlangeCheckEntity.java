@@ -1,8 +1,8 @@
-package diana.dev.quality_control_service.domain.db;
+package diana.dev.quality_control_service.domain.db.entity;
 
 
-import diana.dev.quality_control_service.domain.CheckStatus;
-import diana.dev.quality_control_service.domain.MLVerdict;
+import diana.dev.quality_control_service.domain.enums.CheckStatus;
+import diana.dev.quality_control_service.domain.enums.MLVerdict;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,6 +33,7 @@ public class FlangeCheckEntity {
 
     @Column(name = "flange_id", nullable = false)
     private String flangeId;
+
 
     @Column(name = "timestamp", nullable = false)
     private LocalDateTime timestamp;

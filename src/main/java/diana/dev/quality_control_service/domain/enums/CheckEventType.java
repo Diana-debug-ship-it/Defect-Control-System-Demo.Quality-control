@@ -1,4 +1,4 @@
-package diana.dev.quality_control_service.domain;
+package diana.dev.quality_control_service.domain.enums;
 
 public enum CheckEventType {
     RECEIVED_FROM_ML,

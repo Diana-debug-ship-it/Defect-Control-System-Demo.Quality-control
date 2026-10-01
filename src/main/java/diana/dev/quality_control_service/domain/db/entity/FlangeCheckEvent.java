@@ -1,7 +1,7 @@
-package diana.dev.quality_control_service.domain.db;
+package diana.dev.quality_control_service.domain.db.entity;
 
-import diana.dev.quality_control_service.domain.CheckEventType;
-import diana.dev.quality_control_service.domain.CheckStatus;
+import diana.dev.quality_control_service.domain.enums.CheckEventType;
+import diana.dev.quality_control_service.domain.enums.CheckStatus;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
