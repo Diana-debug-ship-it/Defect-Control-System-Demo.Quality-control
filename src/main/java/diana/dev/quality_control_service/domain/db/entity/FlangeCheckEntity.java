@@ -2,6 +2,7 @@ package diana.dev.quality_control_service.domain.db.entity;
 
 
 import diana.dev.quality_control_service.domain.enums.CheckStatus;
+import diana.dev.quality_control_service.domain.enums.DefectType;
 import diana.dev.quality_control_service.domain.enums.FlangeType;
 import diana.dev.quality_control_service.domain.enums.MLVerdict;
 import jakarta.persistence.*;
@@ -52,8 +53,9 @@ public class FlangeCheckEntity {
     @Column(name = "status", nullable = false)
     private CheckStatus status;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "defect_type", nullable = true)
-    private String defectType;
+    private DefectType defectType;
 
     @Column(name = "confidence", nullable = false)
     private Double confidence;
