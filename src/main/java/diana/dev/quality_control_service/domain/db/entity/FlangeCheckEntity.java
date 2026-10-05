@@ -2,6 +2,7 @@ package diana.dev.quality_control_service.domain.db.entity;
 
 
 import diana.dev.quality_control_service.domain.enums.CheckStatus;
+import diana.dev.quality_control_service.domain.enums.FlangeType;
 import diana.dev.quality_control_service.domain.enums.MLVerdict;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -34,6 +35,11 @@ public class FlangeCheckEntity {
     @Column(name = "flange_id", nullable = false)
     private String flangeId;
 
+    @Column(name = "line_id", nullable = false)
+    private String lineId;
+
+    @Column(name = "flange_type", nullable = false)
+    private FlangeType flangeType;
 
     @Column(name = "timestamp", nullable = false)
     private LocalDateTime timestamp;
@@ -51,8 +57,4 @@ public class FlangeCheckEntity {
 
     @Column(name = "confidence", nullable = false)
     private Double confidence;
-
-    @Column(name = "geometry_metrics", columnDefinition = "jsonb", nullable = true)
-    private String geometryMetrics;
-
 }
