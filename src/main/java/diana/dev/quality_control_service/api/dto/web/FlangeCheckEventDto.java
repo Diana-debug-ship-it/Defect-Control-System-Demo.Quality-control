@@ -6,7 +6,7 @@ import diana.dev.quality_control_service.domain.enums.CheckStatus;
 public record FlangeCheckEventDto(
         String formattedTime,
         String actor,
-        CheckStatus fromStatus,                // null для первого события
+        CheckStatus fromStatus,
         CheckStatus toStatus,
         CheckEventType eventType,
         String details
