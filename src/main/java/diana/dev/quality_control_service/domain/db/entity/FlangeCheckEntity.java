@@ -59,4 +59,7 @@ public class FlangeCheckEntity {
 
     @Column(name = "confidence", nullable = false)
     private Double confidence;
+
+    @Column(name = "url", nullable = true)
+    private String url;
 }
