@@ -1,5 +1,6 @@
 package diana.dev.quality_control_service.domain.db.entity;
 
+import diana.dev.quality_control_service.domain.enums.MeasurementSource;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -45,4 +46,8 @@ public class FlangeMeasurementEntity {
 
     @Column(name = "ovality", nullable = false)
     private Double ovalityMm;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "source", nullable = false)
+    private MeasurementSource source;
 }
