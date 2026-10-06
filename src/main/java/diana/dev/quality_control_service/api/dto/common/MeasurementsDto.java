@@ -1,4 +1,4 @@
-package diana.dev.quality_control_service.api.dto;
+package diana.dev.quality_control_service.api.dto.common;
 
 public record MeasurementsDto(
         Double outerDiameter,
