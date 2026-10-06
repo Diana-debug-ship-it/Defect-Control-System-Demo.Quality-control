@@ -1,7 +1,7 @@
 package diana.dev.quality_control_service.kafka;
 
 
-import diana.dev.quality_control_service.api.FrameResultEvent;
+import diana.dev.quality_control_service.api.dto.kafka.FlangeCheckEvent;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.boot.kafka.autoconfigure.KafkaProperties;
@@ -21,7 +21,7 @@ import java.util.Map;
 public class KafkaConfiguration {
 
     @Bean
-    public ConsumerFactory<Long, FrameResultEvent> frameResultEventConsumerFactory (
+    public ConsumerFactory<Long, FlangeCheckEvent> flangeCheckEventConsumerFactory (
             KafkaProperties kafkaProperties
     ) {
         Map<String, Object> props = kafkaProperties.buildConsumerProperties();
@@ -29,15 +29,15 @@ public class KafkaConfiguration {
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JacksonJsonDeserializer.class);
         props.put(JacksonJsonDeserializer.TRUSTED_PACKAGES, "diana.dev.quality_control_service.api");
-        props.put(JacksonJsonDeserializer.VALUE_DEFAULT_TYPE, FrameResultEvent.class);
+        props.put(JacksonJsonDeserializer.VALUE_DEFAULT_TYPE, FlangeCheckEvent.class);
         return new DefaultKafkaConsumerFactory<>(props);
     }
 
     @Bean
-    public KafkaListenerContainerFactory<?> frameResultEventListenerFactory(
-        ConsumerFactory<Long, FrameResultEvent> consumerFactory
+    public KafkaListenerContainerFactory<?> flangeCheckEventListenerFactory(
+        ConsumerFactory<Long, FlangeCheckEvent> consumerFactory
     ) {
-        ConcurrentKafkaListenerContainerFactory<Long, FrameResultEvent> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        ConcurrentKafkaListenerContainerFactory<Long, FlangeCheckEvent> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory);
         factory.setBatchListener(false);
         return factory;
