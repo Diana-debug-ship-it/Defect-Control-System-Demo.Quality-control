@@ -33,19 +33,19 @@ public class FlangeMeasurementEntity {
     private Double outerDiameter;
 
     @Column(name = "inner_diameter", nullable = false)
-    private Double innerDiameterMm;
+    private Double innerDiameter;
 
     @Column(name = "bolt_hole_count", nullable = false)
     private Integer boltHoleCount;
 
     @Column(name = "bolt_hole_diameter", nullable = false)
-    private Double boltHoleDiameterMm;
+    private Double boltHoleDiameter;
 
     @Column(name = "bolt_circle_diameter", nullable = false)
-    private Double boltCircleDiameterMm;
+    private Double boltCircleDiameter;
 
     @Column(name = "ovality", nullable = false)
-    private Double ovalityMm;
+    private Double ovality;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "source", nullable = false)
