@@ -1,6 +1,6 @@
 package diana.dev.quality_control_service.kafka;
 
-import diana.dev.quality_control_service.api.dto.kafka.FlangeCheckEvent;
+import diana.dev.quality_control_service.api.dto.kafka.FlangeCheckResultDto;
 import diana.dev.quality_control_service.domain.FlangeCheckProcessor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,18 +10,18 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class FlangeCheckEventConsumer {
+public class FlangeCheckResultConsumer {
 
     private final FlangeCheckProcessor flangeCheckProcessor;
 
     @KafkaListener(
-            topics = "${flange-check-event-topic}",
+            topics = "${flange-check-result-topic}",
             groupId = "quality-control-group",
-            containerFactory = "flangeCheckEventListenerFactory"
+            containerFactory = "flangeCheckResultListenerFactory"
     )
-    public void listen(FlangeCheckEvent event) {
-        log.info("Received flange check event: delivery={}", event);
-        flangeCheckProcessor.processFlangeCheckEvent(event);
+    public void listen(FlangeCheckResultDto event) {
+        log.info("Received flange check result event: delivery={}", event);
+        flangeCheckProcessor.processFlangeCheckResult(event);
     }
 
 }

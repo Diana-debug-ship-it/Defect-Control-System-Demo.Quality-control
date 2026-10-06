@@ -7,7 +7,7 @@ import diana.dev.quality_control_service.domain.enums.MLVerdict;
 
 import java.time.LocalDateTime;
 
-public record FlangeCheckEvent(
+public record FlangeCheckResultDto(
 
         String flangeId,
         String url,

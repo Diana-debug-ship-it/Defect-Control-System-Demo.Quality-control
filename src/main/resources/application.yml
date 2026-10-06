@@ -19,4 +19,4 @@ spring:
 server:
   port: 8081
 
-flange-check-event-topic: flange.check.events
+flange-check-result-topic: flange.check.results
