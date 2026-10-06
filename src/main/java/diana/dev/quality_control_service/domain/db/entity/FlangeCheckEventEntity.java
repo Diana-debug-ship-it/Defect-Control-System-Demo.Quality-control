@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
-public class FlangeCheckEvent {
+public class FlangeCheckEventEntity {
 
     @Id
     @GeneratedValue(
