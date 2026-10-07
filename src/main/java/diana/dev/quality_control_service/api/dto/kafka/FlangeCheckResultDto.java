@@ -3,7 +3,7 @@ package diana.dev.quality_control_service.api.dto.kafka;
 import diana.dev.quality_control_service.api.dto.common.MeasurementsDto;
 import diana.dev.quality_control_service.domain.enums.DefectType;
 import diana.dev.quality_control_service.domain.enums.FlangeType;
-import diana.dev.quality_control_service.domain.enums.MLVerdict;
+import diana.dev.quality_control_service.domain.enums.Verdict;
 
 import java.time.LocalDateTime;
 
@@ -15,8 +15,8 @@ public record FlangeCheckResultDto(
         FlangeType flangeType,
         LocalDateTime timestamp,
 
-        MLVerdict mlVerdict,
-        DefectType defectType,
+        Verdict mlVerdict,
+        DefectType mlDefectType,
         Double confidence,
 
         MeasurementsDto measurements

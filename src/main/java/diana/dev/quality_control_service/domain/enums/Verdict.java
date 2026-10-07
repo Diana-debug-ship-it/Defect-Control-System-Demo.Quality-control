@@ -1,6 +1,6 @@
 package diana.dev.quality_control_service.domain.enums;
 
-public enum MLVerdict {
+public enum Verdict {
     DEFECT,
     NORMAL
 }
