@@ -4,7 +4,7 @@ package diana.dev.quality_control_service.domain.db.entity;
 import diana.dev.quality_control_service.domain.enums.CheckStatus;
 import diana.dev.quality_control_service.domain.enums.DefectType;
 import diana.dev.quality_control_service.domain.enums.FlangeType;
-import diana.dev.quality_control_service.domain.enums.MLVerdict;
+import diana.dev.quality_control_service.domain.enums.Verdict;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -47,19 +47,33 @@ public class FlangeCheckEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "ml_verdict", nullable = false)
-    private MLVerdict mlVerdict;
+    private Verdict mlVerdict;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "final_verdict")
+    private Verdict finalVerdict;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private CheckStatus status;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "defect_type", nullable = true)
-    private DefectType defectType;
+    @Column(name = "ml_defect_type")
+    private DefectType mlDefectType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "final_defect_type")
+    private DefectType finalDefectType;
 
     @Column(name = "confidence", nullable = false)
     private Double confidence;
 
-    @Column(name = "url", nullable = true)
+    @Column(name = "url")
     private String url;
+
+    @Column(name = "reviewed_by")
+    private String reviewedBy;
+
+    @Column(name = "reviewed_at")
+    private LocalDateTime reviewedAt;
 }
