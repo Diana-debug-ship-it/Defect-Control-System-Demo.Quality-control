@@ -3,9 +3,20 @@ package diana.dev.quality_control_service.domain.db.entity;
 import diana.dev.quality_control_service.domain.enums.CheckEventType;
 import diana.dev.quality_control_service.domain.enums.CheckStatus;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "flange_check_events",
+        indexes = @Index(name = "idx_event_check_id", columnList = "flange_check_id"))
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class FlangeCheckEventEntity {
 
     @Id
