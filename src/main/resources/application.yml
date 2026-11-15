@@ -1,3 +1,7 @@
+quality-control:
+  thresholds:
+    auto-defect: 0.75
+
 spring:
   application:
     name: quality-control-service
@@ -10,11 +14,20 @@ spring:
     hibernate:
       ddl-auto: update
 
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8080/realms/factory-realm
+  # Временно отключено — включаем, когда поднимем Keycloak
+  # security:
+  #   oauth2:
+  #     resourceserver:
+  #       jwt:
+  #         issuer-uri: http://localhost:8080/realms/factory-realm
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      auto-offset-reset: earliest
+      # group-id НЕ дублируем — он задан в @KafkaListener
+      properties:
+        spring.json.trusted.packages: "diana.dev.quality_control_service.api"
 
 server:
   port: 8081

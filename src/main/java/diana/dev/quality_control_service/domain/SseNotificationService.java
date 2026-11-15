@@ -1,8 +1,8 @@
 package diana.dev.quality_control_service.domain;
 
-
-import diana.dev.quality_control_service.api.FrameUIDto;
+import diana.dev.quality_control_service.api.dto.web.FlangeCheckListItemDto;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
@@ -26,17 +26,16 @@ public class SseNotificationService {
         return emitter;
     }
 
-
-    public void broadcast(FrameUIDto uiDto) {
-        for (SseEmitter emitter: emitters) {
+    public void broadcast(FlangeCheckListItemDto dto) {
+        for (SseEmitter emitter : emitters) {
             try {
                 emitter.send(SseEmitter.event()
-                        .name("frame-check")
-                        .data(uiDto));
+                        .name("flange-check")
+                        .data(dto, MediaType.APPLICATION_JSON));
             } catch (Exception e) {
                 emitters.remove(emitter);
+                log.debug("SSE emitter removed: {}", e.getMessage());
             }
         }
     }
-
 }

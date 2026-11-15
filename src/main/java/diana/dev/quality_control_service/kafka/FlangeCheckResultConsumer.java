@@ -20,8 +20,14 @@ public class FlangeCheckResultConsumer {
             containerFactory = "flangeCheckResultListenerFactory"
     )
     public void listen(FlangeCheckResultDto event) {
-        log.info("Received flange check result event: delivery={}", event);
-        flangeCheckProcessor.processFlangeCheckResult(event);
+        log.info("Received flange check result event: {}", event);
+        try {
+            flangeCheckProcessor.saveResult(event);
+            log.info("Successfully processed flange check for flangeId={}", event.flangeId());
+        } catch (Exception ex) {
+            // логируем и не пробрасываем дальше, чтобы не зациклить consumer
+            // (сообщение уже прочитано, повторная обработка не поможет)
+            log.error("Failed to process flange check event: {}", event, ex);
+        }
     }
-
 }
