@@ -27,7 +27,7 @@ public class FlangeMeasurementEntity {
     private Long id;
 
     @Column(name = "flange_check_id", nullable = false)
-    private String flangeCheckId;
+    private Long flangeCheckId;
 
     @Column(name = "outer_diameter", nullable = false)
     private Double outerDiameter;

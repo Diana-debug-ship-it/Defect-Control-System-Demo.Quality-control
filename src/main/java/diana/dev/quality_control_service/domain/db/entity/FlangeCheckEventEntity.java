@@ -32,7 +32,7 @@ public class FlangeCheckEventEntity {
     private Long id;
 
     @Column(name = "flange_check_id", nullable = false)
-    private String flangeCheckId;
+    private Long flangeCheckId;
 
     @Column(name = "occurred_at", nullable = false)
     private LocalDateTime occurredAt;
